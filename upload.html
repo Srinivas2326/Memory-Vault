@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Memory Vault — Upload</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="js/db.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/upload.js" defer></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">
+        <div class="logo">MV</div>
+        <div>
+          <h1>Memory Vault</h1>
+          <div class="sub">Upload & store media in your browser</div>
+        </div>
+      </div>
+      <div class="sub" id="user-email">—</div>
+    </div>
+
+    <div class="card">
+      <div id="alerts"></div>
+
+      <div class="form-row">
+        <input id="fileInput" class="file-input" type="file" accept="image/*,video/*" />
+        <button id="btnUpload" class="btn">Upload</button>
+      </div>
+
+      <div class="small muted">Allowed: JPG, PNG, WEBP, GIF, MP4, WEBM. Images >10MB will be compressed automatically; large videos are not supported in this demo.</div>
+
+      <div style="margin-top:12px">
+        <div class="progress" aria-hidden><i id="upload-bar"></i></div>
+        <div id="progress-text" class="small muted" style="margin-top:8px"></div>
+      </div>
+
+      <div class="files-list" id="uploadList" style="margin-top:12px"></div>
+
+      <div style="margin-top:12px" class="row">
+        <button id="logoutBtn" class="btn ghost">Logout</button>
+        <button id="btnClear" class="btn ghost">Clear All Files</button>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="muted">Files persist in this browser profile.</div>
+      <div class="muted">Share link opens only in same browser/profile.</div>
+    </div>
+  </div>
+</body>
+</html>

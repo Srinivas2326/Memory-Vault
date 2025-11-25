@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Memory Vault — View File</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="js/db.js"></script>
+  <script src="js/app.js"></script>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="brand">
+        <div class="logo">MV</div>
+        <div>
+          <h1>Memory Vault — View</h1>
+          <div class="sub">Shared file (same browser/profile only)</div>
+        </div>
+      </div>
+      <div class="sub" id="owner"></div>
+    </div>
+
+    <div class="card" id="content">
+      <div id="file-area" class="center">Loading...</div>
+      <div style="margin-top:12px" id="info" class="muted"></div>
+      <div style="margin-top:12px" class="row">
+        <a id="download-link" class="btn ghost" style="display:none">Download</a>
+        <a href="upload.html" class="btn ghost">Go to App</a>
+      </div>
+    </div>
+  </div>
+
+<script>
+function getParam(name){ const u = new URL(location.href); return u.searchParams.get(name); }
+document.addEventListener("DOMContentLoaded", async ()=>{
+  const id = getParam('id');
+  if(!id){ document.getElementById('file-area').textContent='No id provided'; return; }
+  try {
+    const rec = await getFileById(id);
+    if(!rec){ document.getElementById('file-area').textContent='File not found in this browser'; return; }
+    document.getElementById('owner').textContent = rec.owner;
+    const url = URL.createObjectURL(rec.blob);
+    const fa = document.getElementById('file-area'); fa.innerHTML='';
+    if(rec.type.startsWith('image/')) { const img = document.createElement('img'); img.src = url; img.style.maxWidth='100%'; img.style.borderRadius='8px'; fa.appendChild(img); }
+    else if(rec.type.startsWith('video/')) { const v = document.createElement('video'); v.src=url; v.controls=true; v.style.maxWidth='100%'; fa.appendChild(v); }
+    else { const a = document.createElement('a'); a.href=url; a.textContent='Open File'; a.download=rec.name; fa.appendChild(a); }
+    const info = document.getElementById('info'); info.textContent = `${rec.name} • ${rec.type} • ${new Date(rec.createdAt).toLocaleString()}`;
+    const dl = document.getElementById('download-link'); dl.href = url; dl.style.display = 'inline-block'; dl.download = rec.name;
+  } catch (err) {
+    document.getElementById('file-area').textContent = 'Error reading file';
+  }
+});
+</script>
+</body>
+</html>

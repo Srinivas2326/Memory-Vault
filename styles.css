@@ -1,0 +1,31 @@
+:root{
+  --bg:#071022;--card:#0f1724;--muted:#9aa6b2;--accent:#6b46c1;--glass:rgba(255,255,255,0.03);
+}
+*{box-sizing:border-box;font-family:Inter, system-ui, Arial; color:#e6eef6}
+body{margin:0;min-height:100vh;background:linear-gradient(180deg,var(--bg),#041021);display:flex;align-items:center;justify-content:center;padding:28px}
+.container{width:980px;max-width:95%;background:var(--card);border-radius:12px;padding:20px;box-shadow:0 8px 30px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,0.02)}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#06b6d4);display:flex;align-items:center;justify-content:center;font-weight:700;color:white}
+h1{margin:0;font-size:18px}
+.sub{color:var(--muted);font-size:13px}
+.card{padding:18px;border-radius:10px;background:var(--glass);border:1px solid rgba(255,255,255,0.02)}
+.form-row{display:flex;gap:12px;margin-bottom:12px}
+.input, .file-input, button, select, textarea{width:100%;padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.06);color:inherit;font-size:14px}
+.small{font-size:13px;color:var(--muted)}
+.btn{cursor:pointer;padding:10px 14px;border-radius:8px;border:none;background:var(--accent);color:white;font-weight:600}
+.btn.ghost{background:transparent;border:1px solid rgba(255,255,255,0.06)}
+.row{display:flex;gap:12px;align-items:center}
+.progress{height:12px;background:rgba(255,255,255,0.04);border-radius:8px;overflow:hidden}
+.progress > i{display:block;height:100%;width:0%;background:linear-gradient(90deg,#60a5fa,#7c3aed);transition:width .2s}
+.files-list{margin-top:14px;display:flex;flex-direction:column;gap:10px;max-height:360px;overflow:auto;padding-right:6px}
+.file-item{display:flex;justify-content:space-between;align-items:center;padding:10px;border-radius:8px;border:1px solid rgba(255,255,255,0.02);background:rgba(0,0,0,0.2)}
+.meta{display:flex;gap:10px;align-items:center}
+.file-name{font-weight:600}
+.muted{color:var(--muted);font-size:13px}
+.badge{font-size:12px;padding:6px 8px;border-radius:999px;border:1px solid rgba(255,255,255,0.03)}
+.center{display:flex;align-items:center;justify-content:center}
+.alert{padding:10px;border-radius:8px;margin-bottom:12px}
+.alert.error{background:rgba(239,68,68,0.08);border:1px solid rgba(239,68,68,0.12);color:#ef4444}
+.alert.success{background:rgba(16,185,129,0.06);border:1px solid rgba(16,185,129,0.12);color:#10b981}
+.footer{display:flex;justify-content:space-between;align-items:center;margin-top:14px;color:var(--muted);font-size:13px}
