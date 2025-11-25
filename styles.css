@@ -82,6 +82,19 @@ h1 {
   font-size: 14px;
 }
 
+/* Generic helpers */
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.small {
+  font-size: 13px;
+  color: var(--muted);
+}
+
 /* Card */
 .card {
   padding: 20px;
@@ -225,6 +238,20 @@ select:focus {
   border: 1px solid var(--border);
 }
 
+/* File item actions: keep buttons compact */
+.file-item .row {
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.file-item .btn {
+  width: auto;
+  padding: 8px 10px;
+  font-size: 13px;
+  box-shadow: none;
+}
+
 /* Alerts */
 .alert {
   padding: 12px;
@@ -262,9 +289,19 @@ select:focus {
 }
 
 /* Responsive */
-@media(max-width: 600px) {
+@media (max-width: 600px) {
   .form-row,
   .row {
     flex-direction: column;
+  }
+
+  .file-item {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .file-item .row {
+    width: 100%;
+    justify-content: flex-start;
   }
 }
